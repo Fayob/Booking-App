@@ -27,3 +27,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore node_modules directory
+/node_modules
+
+.DS_Store
+.vscode
