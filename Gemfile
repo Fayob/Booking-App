@@ -46,4 +46,8 @@ group :development do
   # gem "spring"
 end
 
+# rack cors to allow external request
 gem "rack-cors", "~> 2.0"
+
+# jsonwebtoken for generating authentication for the api
+gem 'jwt'
