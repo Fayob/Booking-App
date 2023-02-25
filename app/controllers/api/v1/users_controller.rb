@@ -20,8 +20,8 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def test
-    render json: @current_user
+  def not_found
+    render json: { msg: 'Invalid Route' }, status: 404
   end
 
   private
