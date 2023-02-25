@@ -1,7 +1,8 @@
 class Api::V1::UsersController < ApplicationController
+  skip_before_action :authenticate_request, only: [:signup, :login]
 
   def signup
-    user = User.new(name: params[:name], username: params[:username], password: params[:password])
+    user = User.new(user_params)
     if user.save
       render json: {msg: 'Signup was successful'}, status: 201
     else
@@ -12,9 +13,16 @@ class Api::V1::UsersController < ApplicationController
   def login
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
-      render json: {msg: 'Login successfully', id: user.id, name: user.name, username: user.username}, status: 200
+      token = jwt_encode({ user_id: user.id })
+      render json: {msg: 'Login successfully', token:}, status: 200
     else
-      render json: {msg: 'wrong credential provided'}, status: 400
+      render json: {error: 'wrong credential provided'}, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def user_params
+    params.permit(:name, :username, :password)
   end
 end
