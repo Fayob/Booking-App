@@ -7,7 +7,7 @@ module JsonWebToken
   def jwt_encode(payload, exp = 24.hours.from_now)
     payload[:exp] = exp.to_i
     token = JWT.encode(payload, SECRET_KEY)
-    request.headers['Authorization'] = "Bearer #{token}"
+    request.headers['Authorization'] = token
   end
 
   def jwt_decode(token)
