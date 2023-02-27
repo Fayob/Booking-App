@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_23_152457) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_162445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coaches", force: :cascade do |t|
+    t.string "name"
+    t.string "image", default: "https://png.pngtree.com/png-clipart/20220621/original/pngtree-default-photo-placeholder-account-anonymous-png-image_8176883.png"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_coaches_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -22,4 +32,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_152457) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "coaches", "users"
 end
