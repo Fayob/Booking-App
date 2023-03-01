@@ -8,7 +8,7 @@ class Api::V1::CoachesController < ApplicationController
     coach = Coach.find(params[:id])
     render json: coach, status: 200
   rescue ActiveRecord::RecordNotFound => e
-    render json: { e: }, status: 404
+    render json: { error: e }, status: 404
   end
 
   def create
@@ -24,7 +24,7 @@ class Api::V1::CoachesController < ApplicationController
     coach = Coach.find(params[:id])
     render json: { msg: 'Coach was deleted successfully' } if coach.destroy
   rescue ActiveRecord::RecordNotFound => e
-    render json: { e: }, status: 404
+    render json: { error: e }, status: 404
   end
 
   private
