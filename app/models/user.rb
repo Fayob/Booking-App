@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :coaches
+  has_many :coaches, dependent: :delete_all
+  has_many :reserves, class_name: :Reserve, dependent: :delete_all
 
   validates :name, presence: true
   validates :username, presence: true,
