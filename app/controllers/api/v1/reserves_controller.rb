@@ -10,7 +10,7 @@ class Api::V1::ReservesController < ApplicationController
   end
 
   def create
-    reserve = @current_user.reserve.build(coach_id: params[:id])
+    reserve = @current_user.reserve.build(coach_id: params[:coach_id])
     if reserve.save
       render json: { msg: 'Coach Reversed' }, status: 201
     else
