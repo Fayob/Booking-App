@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       post '/signup', to: 'users#signup'
       post '/login', to: 'users#login'
       resources :coaches, except: [:new, :edit, :update]
-      resources :reserves
+      resources :reserves, only: [:index, :create, :destroy]
       get '*a', to: 'users#not_found'
     end
   end
