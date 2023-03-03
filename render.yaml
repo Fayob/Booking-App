@@ -1,7 +1,7 @@
 databases:
   - name: postgres
-    databaseName: booking_app
-    user: postgres
+    databaseName: Budget-App
+    user: budget_app_ghi6_user
 
 services:
   - type: web
