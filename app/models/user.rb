@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_save { self.username = username.downcase }
+
   has_many :coaches, dependent: :delete_all
   has_many :reserves, class_name: :Reserve, dependent: :delete_all
 
