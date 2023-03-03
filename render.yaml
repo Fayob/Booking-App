@@ -1,7 +1,5 @@
 databases:
   - name: postgres
-    databaseName: Budget-App
-    user: budget_app_ghi6_user
 
 services:
   - type: web
