@@ -4,14 +4,15 @@ class Api::V1::UsersController < ApplicationController
   def signup
     user = User.new(user_params)
     if user.save
-      render json: { msg: 'Signup was successful' }, status: 201
+      token = jwt_encode({ user_id: user.id })
+      render json: { msg: 'Signup was successful', token: }, status: 201
     else
       render json: user.errors.full_messages, status: 400
     end
   end
 
   def login
-    user = User.find_by(username: params[:username])
+    user = User.find_by(username: params[:username].downcase)
     if user&.authenticate(params[:password])
       token = jwt_encode({ user_id: user.id })
       render json: { msg: 'Login successfully', token: }, status: 200
