@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_27_162445) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_03_102237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_162445) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.string "city"
     t.index ["user_id"], name: "index_coaches_on_user_id"
+  end
+
+  create_table "reserves", force: :cascade do |t|
+    t.boolean "reserved", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "coach_id", null: false
+    t.index ["coach_id"], name: "index_reserves_on_coach_id"
+    t.index ["user_id"], name: "index_reserves_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_162445) do
   end
 
   add_foreign_key "coaches", "users"
+  add_foreign_key "reserves", "coaches"
+  add_foreign_key "reserves", "users"
 end

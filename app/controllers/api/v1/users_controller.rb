@@ -21,7 +21,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def not_found
-    render json: { msg: 'Invalid Route' }, status: 404
+    render json: { msg: 'Invalid route, please check the route and try again later' }, status: 404
   end
 
   private
