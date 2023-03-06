@@ -30,6 +30,6 @@ class Api::V1::CoachesController < ApplicationController
   private
 
   def coach_params
-    params.permit(:name, :description, :image)
+    params.permit(:name, :description, :image, :city)
   end
 end

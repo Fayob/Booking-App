@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_03_102237) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_03_175550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "category_transacts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "transact_id", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_category_transacts_on_category_id"
+    t.index ["transact_id"], name: "index_category_transacts_on_transact_id"
+  end
 
   create_table "coaches", force: :cascade do |t|
     t.string "name"
@@ -25,6 +43,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_102237) do
     t.index ["user_id"], name: "index_coaches_on_user_id"
   end
 
+  create_table "models", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_models_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
+  end
+
   create_table "reserves", force: :cascade do |t|
     t.boolean "reserved", default: false
     t.datetime "created_at", null: false
@@ -35,15 +65,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_102237) do
     t.index ["user_id"], name: "index_reserves_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "transacts", force: :cascade do |t|
     t.string "name"
-    t.string "username"
-    t.string "password_digest"
+    t.float "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_transacts_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "username"
+    t.string "password_digest"
+    t.string "email", default: "", null: false
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "categories", "users"
+  add_foreign_key "category_transacts", "categories"
+  add_foreign_key "category_transacts", "transacts"
   add_foreign_key "coaches", "users"
   add_foreign_key "reserves", "coaches"
   add_foreign_key "reserves", "users"
+  add_foreign_key "transacts", "users"
 end

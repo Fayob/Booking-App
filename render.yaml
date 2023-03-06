@@ -1,7 +1,5 @@
 databases:
   - name: postgres
-    databaseName: booking_app
-    user: postgres
 
 services:
   - type: web
