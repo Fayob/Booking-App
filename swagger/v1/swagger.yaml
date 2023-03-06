@@ -1,0 +1,62 @@
+---
+openapi: 3.0.1
+info:
+  title: BOOKING APP API
+  version: v1
+paths:
+  "/signup":
+    post:
+      summary: Creates a user
+      tags:
+      - Register
+      parameters: []
+      responses:
+        '201':
+          description: Signup was successful
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+              - name
+              - username
+              - password
+  "/login":
+    post:
+      summary: Login a user
+      tags:
+      - Login
+      parameters: []
+      responses:
+        '200':
+          description: Login successfully
+        '404':
+          description: wrong credential provided
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - password
+servers:
+- url: https://booking-app-7i9f.onrender.com/api/v1
+  variables:
+    defaultHost:
+      default: https://booking-app-7i9f.onrender.com/api/v1
