@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
       token = jwt_encode({ user_id: user.id })
       render json: { msg: 'Signup was successful', token: }, status: 201
     else
-      render json: user.errors.full_messages, status: 400
+      render json: user.errors.full_messages, status: 422
     end
   end
 
@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
       token = jwt_encode({ user_id: user.id })
       render json: { msg: 'Login successfully', token: }, status: 200
     else
-      render json: { error: 'wrong credential provided' }, status: :unprocessable_entity
+      render json: { error: 'wrong credential provided' }, status: 404
     end
   end
 
