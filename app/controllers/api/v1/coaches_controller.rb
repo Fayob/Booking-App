@@ -2,6 +2,8 @@ class Api::V1::CoachesController < ApplicationController
   def index
     coaches = Coach.all
     render json: coaches, status: :ok
+  rescue
+    render json: { msg: 'Something went wrong' }, status: 404
   end
 
   def show
