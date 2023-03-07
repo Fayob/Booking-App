@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Booking App API', type: :request do
-  path '/signup' do
+  path '/api/v1/signup' do
 
     post 'Creates a user' do
       tags 'Register'
@@ -28,7 +28,7 @@ RSpec.describe 'Booking App API', type: :request do
     end
   end
 
-  path '/login' do
+  path '/api/v1/login' do
 
     post 'Login a user' do
       tags 'Login'
@@ -54,65 +54,11 @@ RSpec.describe 'Booking App API', type: :request do
     end
   end
 
-  # path '/coaches' do
-
-  #   get 'Retrieves all coaches' do
-  #     tags 'Coaches'
-  #     produces 'application/json'
-  #     # parameter name: :coach, in: :path, type: :string
-  #     # request_body_example value: { some_field: 'Foo' }, name: 'basic', summary: 'Request example description'
-
-  #     # [
-  #     #   {id: 1, name: 'John doe', image: 'https//image.png', description: 'A software developer', city: 'Berlin'},
-  #     #   {id: 1, name: 'Rick jean', image: 'https//image.png', description: 'A frontend developer', city: 'London'},
-  #     # ]
-  #     schema: {
-  #       type: :object, 
-  #       properties: {
-  #         id: { type: :integer },
-  #         name: { type: :string },
-  #         description: { type: :string },
-  #         image: { type: :string },
-  #         city: { type: :string }
-  #       }
-  #     }
-  #     # { '$ref' => '#/components/schemas/coach' }
-  #     # components {
-  #       #   schemas {
-  #         #     coach {
-  #           #       type :object,
-  #           #       properties: {
-              
-  #             #       }
-  #             #     }
-  #             #   } 
-  #             # }  
-              
-  #             required [ 'id', 'name', 'description', 'image', 'city' ]
-  #         response '200', 'Successful Response'  do         
-
-  #       # let(:coach) { Coach.create(name: 'Jean', description: 'Developer', city: 'Lagos') }
-  #       run_test!
-  #     end
-
-  #     response '404', 'Something went wrong' do
-  #       let(:id) { 'invalid' }
-  #       run_test!
-  #     end
-
-  #     response '406', 'unsupported accept header' do
-  #       let(:'Accept') { 'application/foo' }
-  #       run_test!
-  #     end
-  #   end
-  # end
-
   path '/api/v1/coaches' do
 
     get 'Retrieves all coaches' do
       tags 'Coaches'
       produces 'application/json'
-      # parameters name: :coach
       response '200', 'Request was successfully fetched' do
         after do |example|
           example.metadata[:response][:content] = {
@@ -122,62 +68,21 @@ RSpec.describe 'Booking App API', type: :request do
           }
         end
         run_test!
-
-        #     index do
-        #       schemas do
-        #         coach type: :object
-        #           properties {
-        #             id { type :integer }
-        #             name { type :string }
-        #             description { type :string }
-        #             image { type :string }
-        #             city { type :string }
-        #           }
-        #       end
-        #     end
-
-        #   run_test!
       end
 
-      # response '404', 'coach not found' do
-      #   let(:coach) { 'invalid' }
-      #   run_test!
-      # end
+      response '404', 'something went wrong' do
+        let(:coach) { 'invalid' }
+        run_test!
+      end
 
-      # response '406', 'unsupported accept header' do
-      #   let(:'Accept') { 'application/foo' }
-      #   run_test!
-      # end
+      response '406', 'unsupported accept header' do
+        let(:'Accept') { 'application/foo' }
+        run_test!
+      end
     end
   end
 
-
-  # paths:
-  #   /coaches:
-  #     get:
-  #       summary: Retrieves all coaches
-  #       responses:
-  #         '200':
-  #           description: List of coaches
-  #           content:
-  #             application/json:
-  #               schema:
-  #                 type: array
-  #                 items:
-  #                   $ref: '#/components/schemas/coach'
-  # components:
-  #   schemas:
-  #     coach:
-  #       type: object
-  #       properties:
-  #         id:
-  #           type: integer
-  #         name:
-  #           type: string
-  #         email:
-  #           type: string
-
-  path '/coaches/{id}' do
+  path '/api/v1/coaches/{id}' do
 
     get 'Retrieves a coach' do
       tags 'Coaches'
@@ -212,7 +117,7 @@ RSpec.describe 'Booking App API', type: :request do
     end
   end
 
-  path '/coaches' do
+  path '/api/v1/coaches' do
 
     post 'Add a Coach' do
       tags 'Coaches'
@@ -240,7 +145,7 @@ RSpec.describe 'Booking App API', type: :request do
     end
   end
 
-  path '/coaches/{id}' do
+  path '/api/v1/coaches/{id}' do
 
     delete 'Delete a coach' do
       tags 'Coaches'
@@ -271,7 +176,7 @@ RSpec.describe 'Booking App API', type: :request do
     end
   end
 
-  path '/coaches/{coach_id}/reserves' do
+  path '/api/v1/coaches/{coach_id}/reserves' do
 
     post 'Reserve a Coach' do
       tags 'Reserves'
@@ -291,6 +196,62 @@ RSpec.describe 'Booking App API', type: :request do
 
       response '404', 'wrong credential provided' do
         let(:coach) { { coach_id: '' } }
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/coaches/{coach_id}/reserves' do
+
+    get 'Retrieves all reserved coaches' do
+      tags 'Reserves'
+      produces 'application/json'
+      parameter name: :coach_id, in: :path, schema: { type: :string }
+      response '200', 'Request was successfully fetched' do
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+
+      response '404', 'coach not found' do
+        let(:coach) { 'invalid' }
+        run_test!
+      end
+
+      response '406', 'unsupported accept header' do
+        let(:'Accept') { 'application/foo' }
+        run_test!
+      end
+    end
+  end
+  
+  path 'coaches/{coach_id}/reserves/{id}' do
+    
+    delete 'Delete a coach from reservation list' do
+      tags 'Reserves'
+      produces 'application/json'
+      parameter name: :id, in: :path, type: :string
+      parameter name: :coach_id, in: :path, type: :string
+      
+      response '200', 'coach successfully removed from reservation list' do
+        
+        let(:id) { Reserve.delete().id }
+        let(:coach_id) { Reserve.delete().coach_id }
+        run_test!
+      end
+      
+      response '404', 'coach not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+
+      response '406', 'unsupported accept header' do
+        let(:'Accept') { 'application/foo' }
         run_test!
       end
     end
@@ -340,32 +301,4 @@ RSpec.describe 'Booking App API', type: :request do
   #     end
   #   end
   # end
-
-
-  path 'coaches/{coach_id}/reserves/{id}' do
-
-    delete 'Delete a coach from reservation list' do
-      tags 'Reserves'
-      produces 'application/json'
-      parameter name: :id, in: :path, type: :string
-      parameter name: :coach_id, in: :path, type: :string
-
-      response '200', 'coach successfully removed from reservation list' do
-
-        let(:id) { Reserve.delete().id }
-        let(:coach_id) { Reserve.delete().coach_id }
-        run_test!
-      end
-
-      response '404', 'coach not found' do
-        let(:id) { 'invalid' }
-        run_test!
-      end
-
-      response '406', 'unsupported accept header' do
-        let(:'Accept') { 'application/foo' }
-        run_test!
-      end
-    end
-  end
 end

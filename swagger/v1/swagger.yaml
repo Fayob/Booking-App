@@ -4,7 +4,7 @@ info:
   title: BOOKING APP API
   version: v1
 paths:
-  "/signup":
+  "/api/v1/signup":
     post:
       summary: Creates a user
       tags:
@@ -31,7 +31,7 @@ paths:
               - name
               - username
               - password
-  "/login":
+  "/api/v1/login":
     post:
       summary: Login a user
       tags:
@@ -63,7 +63,40 @@ paths:
       responses:
         '200':
           description: Request was successfully fetched
-  "/coaches/{id}":
+        '404':
+          description: something went wrong
+        '406':
+          description: unsupported accept header
+    post:
+      summary: Add a Coach
+      tags:
+      - Coaches
+      parameters: []
+      responses:
+        '200':
+          description: Coach Created Successfully
+        '404':
+          description: wrong credential provided
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                image:
+                  type: string
+                city:
+                  type: string
+              required:
+              - name
+              - description
+              - image
+              - city
+  "/api/v1/coaches/{id}":
     get:
       summary: Retrieves a coach
       tags:
@@ -128,37 +161,7 @@ paths:
           description: coach not found
         '406':
           description: unsupported accept header
-  "/coaches":
-    post:
-      summary: Add a Coach
-      tags:
-      - Coaches
-      parameters: []
-      responses:
-        '200':
-          description: Coach Created Successfully
-        '404':
-          description: wrong credential provided
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                description:
-                  type: string
-                image:
-                  type: string
-                city:
-                  type: string
-              required:
-              - name
-              - description
-              - image
-              - city
-  "/coaches/{coach_id}/reserves":
+  "/api/v1/coaches/{coach_id}/reserves":
     post:
       summary: Reserve a Coach
       tags:
@@ -179,6 +182,23 @@ paths:
           description: Coach Successfully Reserved
         '404':
           description: wrong credential provided
+    get:
+      summary: Retrieves all reserved coaches
+      tags:
+      - Reserves
+      parameters:
+      - name: coach_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Request was successfully fetched
+        '404':
+          description: coach not found
+        '406':
+          description: unsupported accept header
   coaches/{coach_id}/reserves/{id}:
     delete:
       summary: Delete a coach from reservation list
