@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -24,7 +22,7 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'http://localhost:3000',
+          url: 'http://{defaultHost}',
           variables: {
             defaultHost: {
               default: 'http://localhost:3000'

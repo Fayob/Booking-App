@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Reseve, type: :model do
   @user = User.create(id: 1, name: 'John Doe', username: 'doe1', password: 'password')
-  @coach = Coach.create(id: 1, name: "Kelly", description: "A Software Developer", city: "Berlin")
+  @coach = Coach.create(id: 1, name: 'Kelly', description: 'A Software Developer', city: 'Berlin')
   subject do
     Reserve.create(user: @user, coach: @coach)
   end

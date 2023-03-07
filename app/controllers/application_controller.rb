@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include JsonWebToken
 
-  before_action :authenticate_request #, only: [:index, :show, :create, :delete]
+  before_action :authenticate_request # , only: [:index, :show, :create, :delete]
 
   private
 

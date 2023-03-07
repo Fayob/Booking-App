@@ -4,7 +4,7 @@ describe Coach, type: :model do
   @user = User.create(id: 1, name: 'John Doe', username: 'doe1', password: 'password')
 
   subject do
-    Coach.create(user: @user, name: "Kelly", description: "A Software Developer", city: "Berlin")
+    Coach.create(user: @user, name: 'Kelly', description: 'A Software Developer', city: 'Berlin')
   end
 
   before { subject.save }
@@ -19,7 +19,7 @@ describe Coach, type: :model do
       subject.name = nil
       expect(subject).to_not be_valid
     end
-    
+
     it 'should validate description' do
       subject.description = nil
       expect(subject).to_not be_valid
