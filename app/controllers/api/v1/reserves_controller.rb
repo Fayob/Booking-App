@@ -19,7 +19,7 @@ class Api::V1::ReservesController < ApplicationController
   end
 
   def destroy
-    reserve = Reserve.find(params[:id]) 
+    reserve = Reserve.find(params[:id])
     render json: { msg: 'Coach was successfully removed from reservation list ' }, status: :ok if reserve.destroy
   rescue ActiveRecord::RecordNotFound => e
     render json: { error: e }, status: 404

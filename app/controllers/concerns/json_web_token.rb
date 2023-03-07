@@ -15,7 +15,7 @@ module JsonWebToken
     HashWithIndifferentAccess.new decoded
   rescue JWT::ExpiredSignature => e
     render json: { error: e }
-  rescue JWT::VerificationError => e
+  rescue JWT::VerificationError => e # rubocop:todo Lint/DuplicateBranch
     render json: { error: e }
   end
 end
