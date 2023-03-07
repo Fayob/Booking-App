@@ -24,10 +24,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://booking-app-7i9f.onrender.com/api/v1',
+          url: 'http://localhost:3000',
           variables: {
             defaultHost: {
-              default: 'https://booking-app-7i9f.onrender.com/api/v1'
+              default: 'http://localhost:3000'
             }
           }
         }

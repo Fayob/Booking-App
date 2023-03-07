@@ -55,8 +55,155 @@ paths:
               required:
               - username
               - password
+  "/api/v1/coaches":
+    get:
+      summary: Retrieves all coaches
+      tags:
+      - Coaches
+      responses:
+        '200':
+          description: Request was successfully fetched
+  "/coaches/{id}":
+    get:
+      summary: Retrieves a coach
+      tags:
+      - Coaches
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: coach found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  image:
+                    type: string
+                  city:
+                    type: string
+                required:
+                - id
+                - name
+                - description
+                - image
+                - city
+        '404':
+          description: coach not found
+        '406':
+          description: unsupported accept header
+    delete:
+      summary: Delete a coach
+      tags:
+      - Coaches
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: coach deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                - id
+        '404':
+          description: coach not found
+        '406':
+          description: unsupported accept header
+  "/coaches":
+    post:
+      summary: Add a Coach
+      tags:
+      - Coaches
+      parameters: []
+      responses:
+        '200':
+          description: Coach Created Successfully
+        '404':
+          description: wrong credential provided
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                image:
+                  type: string
+                city:
+                  type: string
+              required:
+              - name
+              - description
+              - image
+              - city
+  "/coaches/{coach_id}/reserves":
+    post:
+      summary: Reserve a Coach
+      tags:
+      - Reserves
+      parameters:
+      - name: reserve
+        in: path
+        schema:
+          type: object
+          properties:
+            coach_id:
+              type: integer
+          required:
+          - coach_id
+        required: true
+      responses:
+        '200':
+          description: Coach Successfully Reserved
+        '404':
+          description: wrong credential provided
+  coaches/{coach_id}/reserves/{id}:
+    delete:
+      summary: Delete a coach from reservation list
+      tags:
+      - Reserves
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: coach_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: coach successfully removed from reservation list
+        '404':
+          description: coach not found
+        '406':
+          description: unsupported accept header
 servers:
-- url: https://booking-app-7i9f.onrender.com/api/v1
+- url: http://localhost:3000
   variables:
     defaultHost:
-      default: https://booking-app-7i9f.onrender.com/api/v1
+      default: http://localhost:3000
