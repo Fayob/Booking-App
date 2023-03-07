@@ -1,4 +1,6 @@
 class Api::V1::CoachesController < ApplicationController
+  skip_before_action :authenticate_request, only: [:index]
+
   def index
     coaches = Coach.all
     render json: coaches, status: :ok
