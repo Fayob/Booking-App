@@ -22,7 +22,7 @@ class Api::V1::CoachesController < ApplicationController
 
   def destroy
     coach = Coach.find(params[:id])
-    render json: { msg: 'Coach was deleted successfully' } if coach.destroy
+    render json: { msg: 'Coach was deleted successfully' }, status: :ok if coach.destroy
   rescue ActiveRecord::RecordNotFound => e
     render json: { error: e }, status: 404
   end
@@ -30,6 +30,6 @@ class Api::V1::CoachesController < ApplicationController
   private
 
   def coach_params
-    params.permit(:name, :description, :image, :city)
+    params.permit(:name, :description, :image)
   end
 end
