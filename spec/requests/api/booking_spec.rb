@@ -194,7 +194,7 @@ RSpec.describe 'Booking App API', type: :request do
     end
   end
 
-  path '/api/v1/coaches/{coach_id}/reserves' do
+  path '/api/v1/reserves' do
     get 'Retrieves all reserved coaches' do
       tags 'Reserves'
       produces 'application/json'
