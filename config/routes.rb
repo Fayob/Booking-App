@@ -4,8 +4,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/signup', to: 'users#signup'
       post '/login', to: 'users#login'
+      get '/reserves', to: 'reserves#index'
       resources :coaches, except: [:new, :edit, :update] do
-        resources :reserves, only: [:index, :create, :destroy] 
+        resources :reserves, only: [:create, :destroy] 
       end
       get '*a', to: 'users#not_found'
     end

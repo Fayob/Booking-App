@@ -4,7 +4,8 @@ class Api::V1::ReservesController < ApplicationController
     reserve_coaches = []
     reserves.each do |reserve|
       coach = reserve.coach
-      reserve_coaches << coach
+      reserve_coaches << { id: reserve.id, name: coach.name, description: coach.description,   
+                           image: coach.image, city: reserve.city, date: reserve.date }
     end
     render json: reserve_coaches
   end
