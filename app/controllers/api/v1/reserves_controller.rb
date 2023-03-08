@@ -10,11 +10,11 @@ class Api::V1::ReservesController < ApplicationController
   end
 
   def create
-    reserve = @current_user.reserve.build(coach_id: params[:coach_id])
+    reserve = @current_user.reserves.build(reserve_params)
     if reserve.save
       render json: { msg: 'Coach Reserved' }, status: 201
     else
-      render json: { error: 'Unable to reserve coach' }, status: 422
+      render json: reserve.errors.full_messages, status: 422
     end
   end
 
@@ -23,5 +23,11 @@ class Api::V1::ReservesController < ApplicationController
     render json: { msg: 'Coach was successfully removed from reservation list ' }, status: :ok if reserve.destroy
   rescue ActiveRecord::RecordNotFound => e
     render json: { error: e }, status: 404
+  end
+
+  private
+
+  def reserve_params
+    params.permit(:city, :date, :coach_id)
   end
 end
