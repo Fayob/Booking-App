@@ -5,7 +5,7 @@ class Api::V1::ReservesController < ApplicationController
     reserves.each do |reserve|
       coach = reserve.coach
       reserved_coaches << { id: reserve.id, name: coach.name, description: coach.description,
-                           image: coach.image, city: reserve.city, date: reserve.date }
+                            image: coach.image, city: reserve.city, date: reserve.date }
     end
     render json: reserved_coaches, status: 200
   end
