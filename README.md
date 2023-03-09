@@ -100,7 +100,9 @@ Clone this [repository](https://github.com/Fayob/Booking-App) to your desired fo
 Install this project with:
 
 ```sh
-  gem install
+  bundle install
+  rails db:create
+  rails db:migrate
 ```
 
 ### Usage
@@ -116,7 +118,9 @@ To spin up the server, execute the following command in your terminal:
 To run tests, run the following command:
 
 ```sh
-  rspec spec
+  rspec ./spec/controllers
+  rspec ./spec/routes
+  rspec ./spec/models
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
