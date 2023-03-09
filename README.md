@@ -64,9 +64,10 @@
 ### Kanban Board
 
 - [Kanban board project link](https://github.com/users/Fayob/projects/5/views/1)
-- [Kanban board project first screenshot](https://live.staticflickr.com/65535/52736598419_6655e94bfa_c.jpg)
-- [Kanban board project second screenshot](https://live.staticflickr.com/65535/52735822107_2cf44fbda2_c.jpg)
-- [Kanban board project third screenshot](https://live.staticflickr.com/65535/52735821797_bb261f729f_c.jpg)
+- Screenshots
+  - [Kanban board project first screenshot](https://live.staticflickr.com/65535/52736598419_6655e94bfa_c.jpg)
+  - [Kanban board project second screenshot](https://live.staticflickr.com/65535/52735822107_2cf44fbda2_c.jpg)
+  - [Kanban board project third screenshot](https://live.staticflickr.com/65535/52735821797_bb261f729f_c.jpg)
 - We are a team of 2 members
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -129,7 +130,7 @@ To run tests, run the following command:
 - Twitter: [@fabimworld](https://twitter.com/Fabimworld2536)
 - LinkedIn: [abimbola-ade](http://linkedin.com/in/abimbola-ade/)
 
-👤 **Mahmoud Rizk**
+👤 **Alphonce**
 
 - GitHub: [@tingamapuro04](https://github.com/tingamapuro04)
 - LinkedIn: [Alphonce](#)
