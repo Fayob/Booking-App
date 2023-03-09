@@ -1,40 +1,7 @@
-<a name="readme-top"></a>
-
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
--->
-
+<a id="readme-top"></a>
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
-  <h3><b>Microverse README Template</b></h3>
-
+  <h3><b>BOOKING APP API README</b></h3>
 </div>
-
-<!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
 
@@ -44,12 +11,11 @@ After you're finished please remove all the comments and instructions!
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
   - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -58,31 +24,19 @@ After you're finished please remove all the comments and instructions!
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-<!-- PROJECT DESCRIPTION -->
+# 📖 BOOKING_APP <a id="about-project"></a>
 
-# 📖 [your_project_name] <a name="about-project"></a>
+**Booking App** is based on an app to book an appointment with a coach. The user will be able to reserve a coach and book an appointment with him/her online.
 
-> Describe your project in 1 or 2 sentences.
+## 🛠 Built With <a id="built-with"></a>
 
-**[your_project__name]** is a...
-
-## 🛠 Built With <a name="built-with"></a>
-
-### Tech Stack <a name="tech-stack"></a>
-
-> Describe the tech stack and include only the relevant sections that apply to your project.
+### Tech Stack <a id="tech-stack"></a>
 
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://ruby-lang.org/">Ruby</a></li>
+    <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
   </ul>
 </details>
 
@@ -93,33 +47,32 @@ After you're finished please remove all the comments and instructions!
   </ul>
 </details>
 
-<!-- Features -->
+### Key Features <a id="key-features"></a>
 
-### Key Features <a name="key-features"></a>
-
-> Describe between 1-3 key features of the application.
-
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- Add a new coach
+- User will be able to see all available coaches
+- User will be able to reserve a coach
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO -->
+### Live Demo <a id="live-demo"></a>
 
-## 🚀 Live Demo <a name="live-demo"></a>
-
-> Add a link to your deployed project.
-
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+[checkout the live demo here](https://booking-app-7i9f.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
+### Kanban Board
 
-## 💻 Getting Started <a name="getting-started"></a>
+- [Kanban board project link](https://github.com/users/Fayob/projects/5/views/1)
+- Screenshots
+  - [Kanban board project first screenshot](https://live.staticflickr.com/65535/52736598419_6655e94bfa_c.jpg)
+  - [Kanban board project second screenshot](https://live.staticflickr.com/65535/52735822107_2cf44fbda2_c.jpg)
+  - [Kanban board project third screenshot](https://live.staticflickr.com/65535/52735821797_bb261f729f_c.jpg)
+- We are a team of 2 members
 
-> Describe how a new developer could make use of your project.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 💻 Getting Started <a id="getting-started"></a>
 
 To get a local copy up and running, follow these steps.
 
@@ -127,113 +80,72 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-<!--
-Example command:
+- A text editor preferably [Visual Studio code](https://code.visualstudio.com/)
+- Latest version of [Ruby](https://www.ruby-lang.org/en/downloads/) installed
+- [PostgreSQL Server](https://www.postgresql.org/download/)
 
-```sh
- gem install rails
-```
- -->
 
 ### Setup
 
-Clone this repository to your desired folder:
-
-<!--
-Example commands:
+Clone this [repository](https://github.com/Fayob/Booking-App) to your desired folder:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone https://github.com/Fayob/Booking-App.git
+  cd Booking-App
 ```
---->
 
 ### Install
 
 Install this project with:
 
-<!--
-Example command:
-
 ```sh
-  cd my-project
   gem install
 ```
---->
 
 ### Usage
 
-To run the project, execute the following command:
-
-<!--
-Example command:
+To spin up the server, execute the following command in your terminal:
 
 ```sh
   rails server
 ```
---->
 
 ### Run tests
 
 To run tests, run the following command:
 
-<!--
-Example command:
-
 ```sh
-  bin/rails test test/models/article_test.rb
+  rspec spec
 ```
---->
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
 
-## 👥 Authors <a name="authors"></a>
+## 👥 Authors <a id="authors"></a>
 
-> Mention all of the collaborators of this project.
+👤 **Abimbola Favour**
 
-👤 **Author1**
+- GitHub: [@fayob](https://github.com/fayob)
+- Twitter: [@fabimworld](https://twitter.com/Fabimworld2536)
+- LinkedIn: [abimbola-ade](http://linkedin.com/in/abimbola-ade/)
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+👤 **Alphonce**
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@tingamapuro04](https://github.com/tingamapuro04)
+- LinkedIn: [Alphonce](#)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FUTURE FEATURES -->
+## 🔭 Future Features <a id="future-features"></a>
 
-## 🔭 Future Features <a name="future-features"></a>
-
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] Add an authorization to all routes
+- [ ] Add an admin role to manage the creation and deletion of coaches
+- [ ] Add more features like notifying the coach after booking and be able to accept or reject the booking
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
-
-## 🤝 Contributing <a name="contributing"></a>
+## 🤝 Contributing <a id="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
@@ -241,48 +153,34 @@ Feel free to check the [issues page](../../issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- SUPPORT -->
 
-## ⭐️ Show your support <a name="support"></a>
+## ⭐️ Show your support <a id="support"></a>
 
-> Write a message to encourage readers to support your project
-
-If you like this project...
+If you like this project, please leave a star 😁
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGEMENTS -->
+## 🙏 Acknowledgments <a id="acknowledgements"></a>
 
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-> Give credit to everyone who inspired your codebase.
-
-I would like to thank...
+We would like to give credit to [Murat Korkmaz](https://www.behance.net/muratk) on Behance for the design used in the front end of this application.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FAQ (optional) -->
 
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
+## ❓ FAQ (OPTIONAL) <a id="faq"></a>
 
-> Add at least 2 questions new developers would ask when they decide to use your project.
+- **Can I reuse this code?**
 
-- **[Question_1]**
+  - Yes, feel free to fork it
 
-  - [Answer_1]
+- **Do I need knowledge of Ruby to use this project?**
 
-- **[Question_2]**
-
-  - [Answer_2]
+  - No you do not.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LICENSE -->
+## 📝 License <a id="license"></a>
 
-## 📝 License <a name="license"></a>
-
-This project is [MIT](./LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
