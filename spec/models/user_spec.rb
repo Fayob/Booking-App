@@ -6,7 +6,7 @@ describe User, type: :model do
   end
 
   before { subject.save }
-  
+
   describe 'validation' do
     it 'should create user successfully if all fields is supplied' do
       expect(subject).to be_valid
@@ -30,6 +30,5 @@ describe User, type: :model do
       subject.password = nil
       expect(subject).to_not be_valid
     end
-
   end
 end

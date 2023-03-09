@@ -55,4 +55,4 @@ gem 'rack-cors', '~> 2.0'
 gem 'jwt'
 
 # Api documentaion generator gem
-  gem 'rswag'
+gem 'rswag'
