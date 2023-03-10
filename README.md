@@ -35,6 +35,13 @@
 <details>
   <summary>Client</summary>
   <ul>
+    <li><a href="https://reactjs.org/">React</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Server</summary>
+  <ul>
     <li><a href="https://ruby-lang.org/">Ruby</a></li>
     <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
   </ul>
