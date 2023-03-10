@@ -1,0 +1,230 @@
+---
+openapi: 3.0.1
+info:
+  title: BOOKING APP API
+  version: v1
+paths:
+  "/api/v1/signup":
+    post:
+      summary: Creates a user
+      tags:
+      - Register
+      parameters: []
+      responses:
+        '201':
+          description: Signup was successful
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+              - name
+              - username
+              - password
+  "/api/v1/login":
+    post:
+      summary: Login a user
+      tags:
+      - Login
+      parameters: []
+      responses:
+        '200':
+          description: Login successfully
+        '404':
+          description: wrong credential provided
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - password
+  "/api/v1/coaches":
+    get:
+      summary: Retrieves all coaches
+      tags:
+      - Coaches
+      responses:
+        '200':
+          description: Request was successfully fetched
+        '404':
+          description: something went wrong
+        '406':
+          description: unsupported accept header
+    post:
+      summary: Add a Coach
+      tags:
+      - Coaches
+      parameters: []
+      responses:
+        '200':
+          description: Coach Created Successfully
+        '404':
+          description: wrong credential provided
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                image:
+                  type: string
+                city:
+                  type: string
+              required:
+              - name
+              - description
+              - image
+              - city
+  "/api/v1/coaches/{id}":
+    get:
+      summary: Retrieves a coach
+      tags:
+      - Coaches
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: coach found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  image:
+                    type: string
+                  city:
+                    type: string
+                required:
+                - id
+                - name
+                - description
+                - image
+                - city
+        '404':
+          description: coach not found
+        '406':
+          description: unsupported accept header
+    delete:
+      summary: Delete a coach
+      tags:
+      - Coaches
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: coach deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                - id
+        '404':
+          description: coach not found
+        '406':
+          description: unsupported accept header
+  "/api/v1/coaches/{coach_id}/reserves":
+    post:
+      summary: Reserve a Coach
+      tags:
+      - Reserves
+      parameters:
+      - name: reserve
+        in: path
+        schema:
+          type: object
+          properties:
+            coach_id:
+              type: integer
+          required:
+          - coach_id
+        required: true
+      responses:
+        '200':
+          description: Coach Successfully Reserved
+        '404':
+          description: wrong credential provided
+  "/api/v1/reserves":
+    get:
+      summary: Retrieves all reserved coaches
+      tags:
+      - Reserves
+      parameters:
+      - name: coach_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Request was successfully fetched
+        '404':
+          description: coach not found
+        '406':
+          description: unsupported accept header
+  coaches/{coach_id}/reserves/{id}:
+    delete:
+      summary: Delete a coach from reservation list
+      tags:
+      - Reserves
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: coach_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: coach successfully removed from reservation list
+        '404':
+          description: coach not found
+        '406':
+          description: unsupported accept header
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: https://booking-app-7i9f.onrender.com
