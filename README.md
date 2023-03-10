@@ -130,6 +130,12 @@ To run tests, run the following command:
   rspec ./spec/models
 ```
 
+The frontend should be run on port [3000](http://localhost:3000) if it's run locally using the command below
+
+```sh
+  npm start
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
