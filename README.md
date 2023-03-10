@@ -120,6 +120,12 @@ To spin up the server, execute the following command in your terminal:
   rails server
 ```
 
+The frontend should be run on port [3000](http://localhost:3000) if it's run locally using the command below
+
+```sh
+  npm start
+```
+
 ### Run tests
 
 To run tests, run the following command:
@@ -128,12 +134,6 @@ To run tests, run the following command:
   rspec ./spec/controllers
   rspec ./spec/routes
   rspec ./spec/models
-```
-
-The frontend should be run on port [3000](http://localhost:3000) if it's run locally using the command below
-
-```sh
-  npm start
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
