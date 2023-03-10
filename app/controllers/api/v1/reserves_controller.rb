@@ -1,6 +1,6 @@
 class Api::V1::ReservesController < ApplicationController
   def index
-    reserves = @current_user.reserves
+    reserves = @current_user.reserves.order('date')
     reserved_coaches = []
     reserves.each do |reserve|
       coach = reserve.coach
