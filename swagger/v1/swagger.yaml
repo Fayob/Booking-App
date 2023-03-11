@@ -89,8 +89,6 @@ paths:
                   type: string
                 image:
                   type: string
-                city:
-                  type: string
               required:
               - name
               - description
@@ -123,8 +121,6 @@ paths:
                     type: string
                   image:
                     type: string
-                  city:
-                    type: string
                 required:
                 - id
                 - name
@@ -148,15 +144,6 @@ paths:
       responses:
         '200':
           description: coach deleted
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                required:
-                - id
         '404':
           description: coach not found
         '406':
@@ -167,21 +154,29 @@ paths:
       tags:
       - Reserves
       parameters:
-      - name: reserve
+      - name: coach_id
         in: path
         schema:
-          type: object
-          properties:
-            coach_id:
-              type: integer
-          required:
-          - coach_id
+          type: string
         required: true
       responses:
         '200':
           description: Coach Successfully Reserved
         '404':
           description: wrong credential provided
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                city:
+                  type: string
+                date:
+                  type: string
+              required:
+              - city
+              - date
   "/api/v1/reserves":
     get:
       summary: Retrieves all reserved coaches

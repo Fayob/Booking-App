@@ -91,8 +91,7 @@ RSpec.describe 'Booking App API', type: :request do
                  id: { type: :integer },
                  name: { type: :string },
                  description: { type: :string },
-                 image: { type: :string },
-                 city: { type: :string }
+                 image: { type: :string }
                },
                required: %w[id name description image city]
 
@@ -120,8 +119,7 @@ RSpec.describe 'Booking App API', type: :request do
         properties: {
           name: { type: :string },
           description: { type: :string },
-          image: { type: :string },
-          city: { type: :string }
+          image: { type: :string }
         },
         required: %w[name description image city]
       }
@@ -146,12 +144,6 @@ RSpec.describe 'Booking App API', type: :request do
       request_body_example value: { some_field: 'Foo' }, name: 'basic', summary: 'Request example description'
 
       response '200', 'coach deleted' do
-        schema type: :object,
-               properties: {
-                 id: { type: :string }
-               },
-               required: ['id']
-
         let(:id) { Coach.delete(name: 'foo', description: 'Developer', city: 'Lagos').id }
         run_test!
       end
@@ -172,12 +164,14 @@ RSpec.describe 'Booking App API', type: :request do
     post 'Reserve a Coach' do
       tags 'Reserves'
       consumes 'application/json'
-      parameter name: :reserve, in: :path, schema: {
+      parameter name: :coach_id, in: :path, schema: { type: :string }
+      parameter name: :reserve, in: :body, schema: {
         type: :object,
         properties: {
-          coach_id: { type: :integer }
+          city: { type: :string },
+          date: { type: :string }
         },
-        required: ['coach_id']
+        required: ['city', 'date']
       }
 
       response '200', 'Coach Successfully Reserved' do
